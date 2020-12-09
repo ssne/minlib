@@ -3,6 +3,8 @@
 
 #include <hal.h>
 
+typedef int size_t;
+
 #ifndef FOPEN_MAX
 #define FOPEN_MAX 6
 #include <file.h>
@@ -12,8 +14,6 @@ FILE *stdin;
 FILE *stdout;
 FILE *stderr;
 #endif
-
-typedef int size_t;
 
 #ifndef NULL
 #define NULL ((void *) 0L)
@@ -30,9 +30,10 @@ int     fpurge(FILE *);
 char    *fgets(char * restrict, int, FILE * restrict);
 void    fprintf(FILE * restrict, char * restrict, ...);
 void    panic(char *);
+size_t  fread(void * restrict, size_t, size_t, FILE * restrict);
+size_t  fwrite(const void * restrict, size_t, size_t, FILE * restrict);
 
 #define _NSMAX (_NSSIZ - 2)
-
 enum _nflags {
     _NPLUS = (1 << 0),
     _NZERO = (1 << 2),
